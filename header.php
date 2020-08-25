@@ -16,6 +16,11 @@
   <?php wp_head()?>  
 </head>
 <body>
+
+<?php 
+  // new in WP-5.2
+  wp_body_open(); 
+?>
 <header class="main">
 <h2>header</h2>
 </header>
