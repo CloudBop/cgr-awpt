@@ -7,11 +7,13 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php language_attributes($doctype) ?>">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="<?php bloginfo($show)?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cgr-awpt WordPress Theme</title>
+
+  <?php wp_head()?>  
 </head>
 <body>
 <header class="main">
