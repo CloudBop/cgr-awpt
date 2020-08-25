@@ -15,7 +15,7 @@
 
   <?php wp_head()?>  
 </head>
-<body>
+<body <?php body_class(); ?>>
 
 <?php 
   // new in WP-5.2
