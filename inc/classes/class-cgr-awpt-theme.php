@@ -31,7 +31,9 @@ class CGR_AWPT_THEME {
 
   }
 
+  // - https://developer.wordpress.org/reference/functions/add_theme_support/
   public function setup_theme() {
+    // todo load-theme-text-domain - internationalisation
     // let WordPress manage title
     add_theme_support( 'title_tag' );
     
@@ -53,6 +55,32 @@ class CGR_AWPT_THEME {
       'default-repeat' => 'no-repeat'
     ]);
 
+    // featured-image
+    add_theme_support('post-thumbnails');
 
+    // https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
+    add_theme_support('customize-selective-refresh-widgets');
+
+    // - head meta
+    add_theme_support('automatic-feed-links');
+
+    // - html5 standards in default markup
+    add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
+
+    // - custom css to tinymice 
+    // add_editor_style( $default = 'editor.style.css' || $custom_path )
+
+    //
+    // 
+    add_theme_support('wp-block-styles');
+    // align-wide and full-width imgs in gutenberg
+    add_theme_support('align-wide');
+
+    // set wordpress global width 
+    global $content_width;
+    if( ! isset( $content_width ) ) {
+        // px
+        $content_width = 1240;
+    }
   }
 }
