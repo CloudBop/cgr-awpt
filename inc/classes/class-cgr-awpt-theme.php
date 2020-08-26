@@ -31,11 +31,11 @@ class CGR_AWPT_THEME {
 
   public function register_styles() {
     // - use this for timestamp, only changes if file is modified
-    $tmp_dir = get_template_directory() . '/style.css';
+    $tmp_dir = CGR_AWPT_DIR_PATH . '/style.css';
     // - register with WP :- can enqueue programatically, for page_template() || gutenberg || plugin 
     // register styles
     wp_register_style($handle = 'style-css', get_stylesheet_uri(), [], $ver = filemtime($tmp_dir), $media= 'all');
-    wp_register_style($handle = 'bootstrap-css', get_template_directory_uri().'/assets/src/library/css/bootstrap.min.css' , [], false, $media= 'all');
+    wp_register_style($handle = 'bootstrap-css', CGR_AWPT_DIR_URI.'/assets/src/library/css/bootstrap.min.css' , [], false, $media= 'all');
 
     //
     // enqeue styles
@@ -45,9 +45,9 @@ class CGR_AWPT_THEME {
 
   public function register_scripts() {
     // register scripts
-    $tmp2 = get_template_directory() . '/assets/main.js';
-    wp_register_script($handle = 'main-js', get_template_directory_uri().'/assets/main.js', [], $ver = filemtime($tmp2), $in_footer=true);
-    wp_register_script($handle = 'bootstrap-js', get_template_directory_uri().'/assets/src/library/js/bootstrap.min.js' , ['jquery'], false, $in_footer=true);
+    $tmp2 = CGR_AWPT_DIR_PATH . '/assets/main.js';
+    wp_register_script($handle = 'main-js', CGR_AWPT_DIR_URI.'/assets/main.js', [], $ver = filemtime($tmp2), $in_footer=true);
+    wp_register_script($handle = 'bootstrap-js', CGR_AWPT_DIR_URI.'/assets/src/library/js/bootstrap.min.js' , ['jquery'], false, $in_footer=true);
     
     wp_enqueue_script($handle='main-js');
     wp_enqueue_script($handle='bootstrap-js');
