@@ -8,6 +8,10 @@
 ?>
 
 
+</div> <!-- end #content.site-content -->
+
+</div> <!-- end #page.site -->
+
 <footer>
   <h2>footer</h2>
 </footer>
