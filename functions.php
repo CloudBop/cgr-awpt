@@ -21,6 +21,11 @@ if ( !defined( 'CGR_AWPT_DIR_URI') ) {
 
 // autoload all classes
 require_once CGR_AWPT_DIR_PATH .'/inc/helpers/autoloader.php';
+
+// template tags
+require_once CGR_AWPT_DIR_PATH .'/inc/helpers/template-tags.php';
+
+
 //
 function cgr_awpt_get_theme_instance() {
   \CGR_AWPT\Inc\CGR_AWPT_THEME::get_instance();

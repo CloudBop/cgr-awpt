@@ -21,3 +21,8 @@ note: Text-Domain is directory name
 body {
   background-color: #456099;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
