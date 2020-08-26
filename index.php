@@ -2,6 +2,8 @@
 /**
  * main template
  * 
+ * end of template heirarchy
+ * 
  * @package cgr-awpt
  */
 ?>
