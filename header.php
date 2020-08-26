@@ -5,6 +5,11 @@
  * @package cgr-awpt
  * 
  */
+
+// Singleton - only instantiated once.
+$menu_class = \CGR_AWPT\Inc\Menus::get_instance();
+$header_menu_id = $menu_class->get_menu_id( 'cgr-awpt-header-menu' );
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php language_attributes($doctype) ?>">

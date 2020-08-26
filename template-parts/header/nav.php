@@ -47,3 +47,10 @@
     </form>
   </div>
 </nav>
+
+<?php
+  wp_nav_menu(array(
+    'theme_location'  =>  'cgr-awpt-header-menu',
+    'container_class' =>  'my-class',
+  ))
+?>
