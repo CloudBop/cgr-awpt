@@ -18,7 +18,8 @@ class CGR_AWPT_THEME {
     // instantiate classes, using singleton trait + autoloader 
 
     Assets::get_instance();
-    
+    Menus::get_instance();
+
     $this->setup_hooks();
   }
 
