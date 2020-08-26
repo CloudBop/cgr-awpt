@@ -18,8 +18,10 @@
 <body <?php body_class(); ?>>
 
 <?php 
-  // new in WP-5.2
-  wp_body_open(); 
+  if ( function_exists('wp_body_open') ){
+    // new in WP-5.2
+    wp_body_open(); 
+  }
 ?>
 <header class="main">
 <h2>header</h2>
