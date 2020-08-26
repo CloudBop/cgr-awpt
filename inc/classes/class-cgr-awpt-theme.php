@@ -27,6 +27,23 @@ class CGR_AWPT_THEME {
     /**
      * Actions
      */
+    add_action('after_setup_theme', [$this, 'setup_theme'], $priority, $accepted_args);
 
-  }  
+  }
+
+  public function setup_theme() {
+    // let WordPress manage title
+    add_theme_support( 'title_tag' );
+
+    add_theme_support( 'custom-logo', $defaults = array(
+      // classnames 
+      'header-text' => array( 'site-title', 'site-description' ),
+      'height'      => 100,
+      'width'       => 400,
+      // add support for cropping image in WP-admin 
+      'flex-height' => true,
+      'flex-width'  => true,
+    ));
+    
+  }
 }
