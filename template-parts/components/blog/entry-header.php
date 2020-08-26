@@ -22,10 +22,10 @@
         <?php
           the_post_custom_thumbnail(
             $the_post_id,
-            $size = "featured-large",
+            $size = "featured-thumbnail",
             [
-              'sizes' => '(max-width: 590px) 590px, 425px)',
-              'class' => 'attachment-featured-large size-featured-image'
+              'sizes' => '(max-width: 350px) 350px, 233px',
+              'class' => 'attachment-featured-thumbnail size-featured-image'
             ]
           )
         ?>

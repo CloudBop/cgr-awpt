@@ -1,7 +1,7 @@
 <?php
 
 // invoked in The Loop.
-function get_the_post_custom_thumbnail( $post_id, $size = 'featured-large', $additional_attributes = []){
+function get_the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', $additional_attributes = []){
 
   $custom_thumbnail = '';
 
@@ -27,7 +27,7 @@ function get_the_post_custom_thumbnail( $post_id, $size = 'featured-large', $add
   return $custom_thumbnail;
 }
 
-function the_post_custom_thumbnail($post_id, $size = 'featured-large', $additional_attributes = []){
+function the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $additional_attributes = []){
   //
   echo get_the_post_custom_thumbnail($post_id, $size, $additional_attributes);
 }

@@ -59,6 +59,9 @@ class CGR_AWPT_THEME {
     // featured-image
     add_theme_support('post-thumbnails');
 
+    // register image sizes
+    add_theme_support( 'featured-thumbnail', 350, 233, $crop_from_center=true );
+
     // https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
     add_theme_support('customize-selective-refresh-widgets');
 
