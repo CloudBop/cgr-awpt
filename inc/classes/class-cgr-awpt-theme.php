@@ -34,7 +34,7 @@ class CGR_AWPT_THEME {
   public function setup_theme() {
     // let WordPress manage title
     add_theme_support( 'title_tag' );
-
+    
     add_theme_support( 'custom-logo', $defaults = array(
       // classnames 
       'header-text' => array( 'site-title', 'site-description' ),
@@ -45,5 +45,14 @@ class CGR_AWPT_THEME {
       'flex-width'  => true,
     ));
     
+    //
+    // adds body.custom-background selector to body - wp-includes/class-wp-rest-themes-controller
+    add_theme_support('custom-background', [
+      'default-color' => '#654687',
+      // 'default-image' => 
+      'default-repeat' => 'no-repeat'
+    ]);
+
+
   }
 }
