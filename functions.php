@@ -6,12 +6,14 @@
  * 
  */
 
- function cgr_awpt(){
+if ( !defined( 'CGR_AWPT_DIR_PATH') ) {
+  // - get theme dir - app/public/wp-content/themes/cgr-awpt
+  define( 'CGR_AWPT_DIR_PATH' , untrailingslashit( $string=get_template_directory() ) );
+}
+// autoload all classes
+require_once CGR_AWPT_DIR_PATH .'/inc/helpers/autoloader.php';
 
-
-
-
-
+function cgr_awpt(){
   // - use this for timestamp, only changes if file is modified
   $tmp_dir = get_template_directory() . '/style.css';
   $tmp2 = get_template_directory() . '/assets/main.js';
