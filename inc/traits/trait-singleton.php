@@ -1,7 +1,7 @@
 <?php
-
+//
 namespace CGR_AWPT\Inc\Traits;
-
+// - cannot instantiate a trait directly, use within class
 trait Singleton {
   public function __construct() {
 
