@@ -13,7 +13,7 @@
 <div id="primary">
   <main id="main" class="site-main mt-5" role="main">
 
-    <?php if ( have_posts() ) { ?>
+    <?php if ( have_posts() ) : ?>
       
       <div class="container">
 
@@ -43,11 +43,8 @@
                 <?php
               }
 
-              ?>
-                <h3><?php the_title(); ?></h3>
-                <div><?php the_excerpt(); ?></div>
-                <span><?php echo $index; ?>  </span>
-              <?php
+              get_template_part( 'template-parts/content');
+
               $index++;
               if ( 0 !== $index && 0 === $index % $no_of_columns) {
                 ?>
@@ -58,10 +55,14 @@
               endwhile;
               ?>
         </div>
-        
       </div>  <!-- end container -->
+
+    <?php else : 
+      get_template_part('template-parts/content-none');
+        
+    ?>
     
-    <?php }?>
+    <?php endif?>
 
   </main>
 </div>
