@@ -12,7 +12,12 @@ if ( !defined( 'CGR_AWPT_DIR_PATH') ) {
 }
 // autoload all classes
 require_once CGR_AWPT_DIR_PATH .'/inc/helpers/autoloader.php';
-
+//
+function cgr_awpt_get_theme_instance() {
+  \CGR_AWPT\Inc\CGR_AWPT_THEME::get_instance();
+}
+cgr_awpt_get_theme_instance();
+// 
 function cgr_awpt(){
   // - use this for timestamp, only changes if file is modified
   $tmp_dir = get_template_directory() . '/style.css';
