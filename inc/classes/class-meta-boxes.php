@@ -24,6 +24,8 @@ class Meta_Boxes {
      * Actions
      */
     add_action( 'add_meta_boxes', [$this, 'add_custom_metabox' ] );
+    add_action( 'save_post', [$this, 'save_post_meta_data' ] );
+
   }
 
   public function add_custom_metabox($post) {
@@ -46,7 +48,7 @@ class Meta_Boxes {
     $value = get_post_meta($post->ID, '_hide_page_title', true);
     ?>
     <label for="cgr-awpt-field"> <?php esc_html_e('Hide the page title', 'cgr-awpt'); ?></label>
-    <select name="cgr_awpt_field" id="cgr-awpt-field" class="postbox">
+    <select name="cgr_awpt__hide_title_field" id="cgr-awpt-field" class="postbox">
         <option value=""> <?php esc_html_e('Select', 'cgr-awpt'); ?> </option>
         <option value="yes" <?php selected($value, 'yes'); ?>>
           <?php esc_html_e('Yes', 'cgr-awpt'); ?>
@@ -59,6 +61,17 @@ class Meta_Boxes {
   /* 
   Note there are no submit buttons in meta boxes. The meta box HTML is included inside the edit screen’s form tags, all the post data including meta box values are transfered via POST when the user clicks on the Publish or Update buttons.
   */
+  }
+
+  public function save_post_meta_data ($post_id) {
+    if (array_key_exists('cgr_awpt__hide_title_field', $_POST)) {
+      update_post_meta(
+          $post_id,
+          $_wporg_meta_key='_hide_page_title',
+          $_POST['cgr_awpt__hide_title_field']
+      );
+  }
+
   }
 
 }
