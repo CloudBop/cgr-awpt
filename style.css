@@ -26,3 +26,9 @@ img {
   width: 100%;
   height: auto;
 }
+
+/* Entry-meta */
+.updated:not(.published) {
+  // hidetime- class 'updated' in mrkup for SEO
+  display: none;
+}
