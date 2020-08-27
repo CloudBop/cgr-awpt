@@ -29,6 +29,11 @@ img {
 
 /* Entry-meta */
 .updated:not(.published) {
-  // hidetime- class 'updated' in mrkup for SEO
+  /* hidetime- class 'updated' in mrkup for SEO */
   display: none;
+}
+
+/* nav child menu hover - bootstrap4 - be wary of hover on touchscreen */
+.nav-item:hover .dropdown-menu:not(.show) {
+  display: block;
 }
