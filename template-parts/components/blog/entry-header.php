@@ -46,7 +46,7 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
         // is hidden ?
         esc_attr( $heading_class ) ,
         // santize
-        wp_kses( get_the_title() )
+        wp_kses_post( get_the_title() )
       );
       // - blog post list (home) or archives
     } else {
@@ -54,12 +54,12 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
       printf(
         // link
         '<h2 class="entry-title mb-3"> 
-          <a class="text-dark" href="%1$s"> %2$s test </a>
+          <a class="text-dark" href="%1$s"> %2$s </a>
         </h2>',
         //
         esc_url( get_the_permalink() ) ,
         // santize
-        wp_kses( get_the_title() )
+        wp_kses_post( get_the_title() )
       );
     }
   ?>
