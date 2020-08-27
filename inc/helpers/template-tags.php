@@ -53,9 +53,24 @@ function cgr_awpt_posted_on() {
 
   $posted_on = sprintf(
     // $ctx = ctx info for translators
-    esc_html_x( 'Posted on $s', $ctx='post date', 'cgr-awpt' ),
+
+    //FIXME: $s doesn't work as interpolator.
+
+    esc_html_x( 'Posted on %s', $ctx='post date', 'cgr-awpt' ),
     '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark">'. $time_string .'</a>'
   );
 
   echo '<span class="posted-one text-secondary">'. $posted_on .'</span>';
+}
+
+function cgr_awpt_posted_by() {
+  $byline = sprintf(
+    // translate escape+user ctx
+    esc_html_x( 'by %s', 'post author', 'cgr-awpt'),
+    '<span class="author vcard"> 
+      <a href="'. esc_url( get_author_posts_url($author_id = get_the_author_meta('ID') ) ) .'">'. esc_html( get_the_author() ) .'</a>
+    </span>'
+  );
+
+  echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
