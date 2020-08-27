@@ -44,6 +44,13 @@ class Meta_Boxes {
   }
 
   public function custom_meta_box_html($post) {
+    // pluiginbase name === action name === Applications/LocalByFlywheel/../inc/classes/class-meta-boxes.php
+    wp_nonce_field(
+      $action=plugin_basename(__FILE__), 
+      $name  ='cgr_awpt__hide_title_field_nonce', 
+      // $referer, 
+      // $echo
+    );
 
     $value = get_post_meta($post->ID, '_hide_page_title', true);
     ?>
@@ -64,14 +71,35 @@ class Meta_Boxes {
   }
 
   public function save_post_meta_data ($post_id) {
-    if (array_key_exists('cgr_awpt__hide_title_field', $_POST)) {
-      update_post_meta(
-          $post_id,
-          $_wporg_meta_key='_hide_page_title',
-          $_POST['cgr_awpt__hide_title_field']
-      );
-  }
 
-  }
+    /**
+     * when post is saved || updated check $_POST for nonce, if available
+     */
 
+    if ( ! current_user_can( 'edit_post', $post_id) ) {
+      return;
+    }
+
+    if(
+      // updated check $_POST for nonce, if available
+      ! isset( $_POST['cgr_awpt__hide_title_field_nonce'] )
+      // only veryify if exists on $_POST
+      || ! wp_verify_nonce( 
+        $nonce = $_POST['cgr_awpt__hide_title_field_nonce'], 
+        $action = plugin_basename(__FILE__))
+    ){
+      // failed to verify nonce
+      return;
+      
+    } else{
+      if (array_key_exists('cgr_awpt__hide_title_field', $_POST)) {
+        // nonce verified
+        update_post_meta(
+            $post_id,
+            $_wporg_meta_key='_hide_page_title',
+            $_POST['cgr_awpt__hide_title_field']
+        );
+      }
+    }
+  }
 }
