@@ -44,23 +44,25 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
       printf(
         '<h1 class="page-title text-dark %1$s"> %2$s</h1>',
         // is hidden ?
-        $_1s= esc_attr( $heading_class ) ,
+        esc_attr( $heading_class ) ,
         // santize
-        $_2s= wp_kses( $data, 'post')
+        wp_kses( get_the_title() )
       );
       // - blog post list (home) or archives
     } else {
+      
       printf(
         // link
         '<h2 class="entry-title mb-3"> 
-          <a class="text-dark" href"%1$s"> %2$s </a>
+          <a class="text-dark" href="%1$s"> %2$s test </a>
         </h2>',
         //
-        $_1s= esc_url( get_the_permalink() ) ,
+        esc_url( get_the_permalink() ) ,
         // santize
-        $_2s= wp_kses( $data, 'post')
+        wp_kses( get_the_title() )
       );
     }
-
   ?>
+
+  
 </header>
