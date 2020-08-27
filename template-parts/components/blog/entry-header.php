@@ -9,7 +9,9 @@
 
 $the_post_id = get_the_ID();
 $hide_title = get_post_meta( $the_post_id, '_hide_page_title', true);
+$heading_class = ! empty( $hide_title ) && 'yes' === $hide_title ? 'hide' : '';
 $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
+
 ?>
 
 
@@ -34,5 +36,31 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
       </div>
       <?php
     }
+
+
+    // title - for single || page
+    if ( is_single() || is_page() ){
+      // interpolate strings
+      printf(
+        '<h1 class="page-title text-dark %1$s"> %2$s</h1>',
+        // is hidden ?
+        $_1s= esc_attr( $heading_class ) ,
+        // santize
+        $_2s= wp_kses( $data, 'post')
+      );
+      // - blog post list (home) or archives
+    } else {
+      printf(
+        // link
+        '<h2 class="entry-title mb-3"> 
+          <a class="text-dark" href"%1$s"> %2$s </a>
+        </h2>',
+        //
+        $_1s= esc_url( get_the_permalink() ) ,
+        // santize
+        $_2s= wp_kses( $data, 'post')
+      );
+    }
+
   ?>
 </header>
