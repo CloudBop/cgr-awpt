@@ -35,11 +35,18 @@ class Assets {
     // - register with WP :- can enqueue programatically, for page_template() || gutenberg || plugin 
     // register styles
     wp_register_style($handle = 'style-css', get_stylesheet_uri(), [], $ver = filemtime($tmp_dir), $media= 'all');
-    wp_register_style($handle = 'bootstrap-css', CGR_AWPT_DIR_URI.'/assets/src/library/css/bootstrap.min.css' , [], false, $media= 'all');
+    wp_register_style($handle = 'bootstrap-css', CGR_AWPT_DIR_URI.'/assets/src/library/css/bootstrap.min.css' , [], $media= 'all');
+    wp_register_style($handle = 'main-css', CGR_AWPT_BUILD_CSS_URI . '/main.css' , ['bootstrap-css'], filemtime(CGR_AWPT_BUILD_CSS_DIR_PATH . '/main.css'), $media= 'all');
+
+
+    // -create google font set - https://google-webfonts-helper.herokuapp.com/fonts
+
+    wp_register_style($handle = 'fonts-css', CGR_AWPT_DIR_URI.'/assets/src/library/fonts/fonts.css' , [], false, $media= 'all');
 
     //
     // enqeue styles
     wp_enqueue_style($handle='bootstrap-css');
+    wp_enqueue_style($handle='main-css');
     wp_enqueue_style($handle='style-css');
   }
 
@@ -47,7 +54,7 @@ class Assets {
     
     // register scripts
     $tmp2 = CGR_AWPT_BUILD_JS_DIR_PATH . '/main.js';
-    wp_register_script($handle = 'main-js', CGR_AWPT_BUILD_JS_URI, ['jquery'], $ver = filemtime($tmp2), $in_footer=true);
+    wp_register_script($handle = 'main-js', CGR_AWPT_BUILD_JS_URI . '/main.js', ['jquery'], $ver = filemtime($tmp2), $in_footer=true);
     wp_register_script($handle = 'bootstrap-js', CGR_AWPT_DIR_URI.'/assets/src/library/js/bootstrap.min.js' , ['jquery'], false, $in_footer=true);
     
     //

@@ -18,29 +18,3 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 note: Text-Domain is directory name
 */
-body {
-  background-color: sandybrown;
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-
-/* Entry-meta */
-.updated:not(.published) {
-  /* hidetime- class 'updated' in mrkup for SEO */
-  display: none;
-}
-
-/* nav child menu hover - bootstrap4 - be wary of hover on touchscreen */
-.nav-item:hover .dropdown-menu:not(.show) {
-  display: block;
-}
-
-/* pagination */
-
-.page-numbers.current > span {
-  background-color: gray;
-  color: #ffF;
-}

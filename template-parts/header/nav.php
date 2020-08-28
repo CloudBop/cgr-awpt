@@ -43,7 +43,6 @@ $header_menus = wp_get_nav_menu_items($menu = $header_menu_id, $args=[])
                         <?php echo esc_html( $menu_item->title ); ?>
                         <span class="sr-only">(current)</span>
                       </a>
-                      <pre><?php // var_dump($menu_item); ?></pre>
                     </li>
                   <?php
                 } else {
