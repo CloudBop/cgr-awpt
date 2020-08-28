@@ -46,8 +46,8 @@ class Assets {
   public function register_scripts() {
     
     // register scripts
-    $tmp2 = CGR_AWPT_DIR_PATH . '/assets/src/js/main.js';
-    wp_register_script($handle = 'main-js', CGR_AWPT_DIR_URI.'/assets/main.js', ['jquery'], $ver = filemtime($tmp2), $in_footer=true);
+    $tmp2 = CGR_AWPT_BUILD_JS_DIR_PATH . '/main.js';
+    wp_register_script($handle = 'main-js', CGR_AWPT_BUILD_JS_URI, ['jquery'], $ver = filemtime($tmp2), $in_footer=true);
     wp_register_script($handle = 'bootstrap-js', CGR_AWPT_DIR_URI.'/assets/src/library/js/bootstrap.min.js' , ['jquery'], false, $in_footer=true);
     
     //
