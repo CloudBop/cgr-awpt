@@ -37,7 +37,7 @@
 
               if ( 0 === $index % $no_of_columns ) {
                 ?>
-                  <div class="col-lg-4 col-md-6 col-12">
+                  <div class="col-lg-4 col-md-6 col-sm-12">
                   
                 <?php
               }

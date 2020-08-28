@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-8- col-sm-12">
         <?php if ( have_posts() ) : ?>
-          <div class="container">
+          <div class="post-wrap">
 
             <?php if( is_home() && ! is_front_page() ) { ?>
               <header class="mb-5">
@@ -29,26 +29,29 @@
                 get_template_part( 'template-parts/content');
               endwhile;
               ?>
-          </div>  <!-- end container -->
+          </div>  <!-- end post-wrap -->
 
         <?php else : 
           get_template_part('template-parts/content-none');
           endif;
         ?>
+
+        <div class="prev-link">
+          <?php previous_post_link(); ?>
+        </div>
+        <div class="next-link">
+          <?php next_post_link(); ?>
+        </div>
+        
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-12">
-          <?php get_sidebar(); ?>
+          <?php 
+          // from sidebar.php
+          get_sidebar(); ?>
       </div>
-    </div>
-   </div>
-
-    <div class="container">
-      <?php
-        previous_post_link();
-        next_post_link();
-      ?>
-    </div>
+    </div> <!-- end row -->
+   </div> <!-- end container -->
   </main>
 </div>
 
