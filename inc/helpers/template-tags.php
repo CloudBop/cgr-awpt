@@ -74,3 +74,22 @@ function cgr_awpt_posted_by() {
 
   echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
+
+function cgr_awpt_the_excerpt( $trim_charachter_count=0 ) {
+  
+  // if excerpt is set
+  if ( ! has_excerpt() || 0 === $trim_charachter_count ) {
+    // echos 
+    the_excerpt();
+    return;
+  }
+
+  // else use custom excerpt
+
+  $excerpt = wp_strip_all_tags($string = get_the_excerpt(), $remove_breaks=null);
+  $excerpt = substr( $excerpt, 0, $trim_charachter_count);
+  // truncate @ space before last word - filter out final word in case it's incomplete
+  $excerpt = substr( $excerpt, 0, strrpos( $excerpt, ' ' ));
+  //  
+  echo $excerpt . '[...]';
+}
