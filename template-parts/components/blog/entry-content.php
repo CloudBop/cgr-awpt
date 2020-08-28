@@ -30,6 +30,7 @@
     );
   } else {
     cgr_awpt_the_excerpt(50);
+    echo cgr_awpt_excerpt_more();
   }
 
   ?>

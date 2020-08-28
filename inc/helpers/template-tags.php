@@ -93,3 +93,21 @@ function cgr_awpt_the_excerpt( $trim_charachter_count=0 ) {
   //  
   echo $excerpt . '[...]';
 }
+
+
+function cgr_awpt_excerpt_more() {
+  // - don't need on single
+  if ( ! is_single() ) {
+
+    $more = sprintf(
+      '<button class="mt-4 btn btn-info">
+        <a class="cgr-awpt-read-more text-white" href="%1$s"> %2$s</a>
+      </button>',
+      get_permalink( get_the_ID() ),
+      __( 'Read more', 'cgr-awpt')
+    );
+
+  }
+
+  return $more;
+}
