@@ -28,6 +28,12 @@
         $strip_teaser = the_title($before = '<span class="screen-reader-text">"', $after = '"</span>', $echo = false)
       )
     );
+    
+    wp_link_pages([
+      'before' => '<div class="page-links">' . esc_html( 'Pages: ', 'cgr-awpt'),
+      'after'  => '</div>'
+    ]);
+  
   } else {
     cgr_awpt_the_excerpt(50);
     echo cgr_awpt_excerpt_more();
