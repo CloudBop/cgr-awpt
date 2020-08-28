@@ -21,27 +21,27 @@ if ( !defined( 'CGR_AWPT_DIR_URI') ) {
 
 if ( !defined( 'CGR_AWPT_BUILD_URI') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/build' );
+  define( 'CGR_AWPT_BUILD_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build' );
 }
 if ( !defined( 'CGR_AWPT_BUILD_JS_URI') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_JS_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/build/js' );
+  define( 'CGR_AWPT_BUILD_JS_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build/js' );
 }
 if ( !defined( 'CGR_AWPT_BUILD_JS_DIR_PATH') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_JS_DIR_PATH' , untrailingslashit( $string=get_template_directory() ) . '/build/js' );
+  define( 'CGR_AWPT_BUILD_JS_DIR_PATH' , untrailingslashit( $string=get_template_directory() ) . '/assets/build/js' );
 }
 if ( !defined( 'CGR_AWPT_BUILD_CSS_URI') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_CSS_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/build/css' );
+  define( 'CGR_AWPT_BUILD_CSS_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build/css' );
 }
 if ( !defined( 'CGR_AWPT_BUILD_CSS_DIR_PATH') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_CSS_DIR_PATH' , untrailingslashit( $string=get_template_directory() ) . '/build/css' );
+  define( 'CGR_AWPT_BUILD_CSS_DIR_PATH' , untrailingslashit( $string=get_template_directory() ) . '/assets/build/css' );
 }
 if ( !defined( 'CGR_AWPT_BUILD_IMG_URI') ) {
   // - get build folder 
-  define( 'CGR_AWPT_BUILD_IMG_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/build/src/img' );
+  define( 'CGR_AWPT_BUILD_IMG_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build/src/img' );
 }
 
 // autoload all classes
