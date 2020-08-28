@@ -37,3 +37,10 @@ img {
 .nav-item:hover .dropdown-menu:not(.show) {
   display: block;
 }
+
+/* pagination */
+
+.page-numbers.current > span {
+  background-color: gray;
+  color: #ffF;
+}

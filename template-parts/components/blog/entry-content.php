@@ -39,6 +39,8 @@
     echo cgr_awpt_excerpt_more();
   }
 
+  
+
   ?>
 </div>
 

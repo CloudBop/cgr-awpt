@@ -111,3 +111,27 @@ function cgr_awpt_excerpt_more() {
 
   return $more;
 }
+
+function cgr_awpt_pagination() {
+
+  $allowed_tags = [ 
+    'a' => [ 
+      'class'=>[],
+      'href'=>[]
+    ], 
+    'span' => [ 
+      'class'=>[]
+    ]
+  ];
+  
+  // wrapper tag
+  $args = [
+    'before_page_number' => '<span class="btn border border-secondary mr-2 mb-2">',
+    'after_page_number' => '</span>'
+  ];
+  
+  printf( 
+    '<nav class="cgr-awpt-pagination clearfix">%s</nav>', 
+    wp_kses( paginate_links($args), $allowed_tags )  
+  );
+}

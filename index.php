@@ -14,7 +14,6 @@
   <main id="main" class="site-main mt-5" role="main">
 
     <?php if ( have_posts() ) : ?>
-      
       <div class="container">
 
         <?php if( is_home() && ! is_front_page() ) { ?>
@@ -57,12 +56,13 @@
         </div>
       </div>  <!-- end container -->
 
-    <?php else : 
-      get_template_part('template-parts/content-none');
-        
-    ?>
-    
-    <?php endif?>
+      <?php 
+        else : 
+          get_template_part('template-parts/content-none');  
+        endif;
+      
+        cgr_awpt_pagination();
+      ?>
 
   </main>
 </div>
