@@ -100,9 +100,11 @@ function cgr_awpt_excerpt_more() {
   if ( ! is_single() ) {
 
     $more = sprintf(
-      '<button class="mt-4 btn btn-info">
-        <a class="cgr-awpt-read-more text-white" href="%1$s"> %2$s</a>
-      </button>',
+      '<a class="cgr-awpt-read-more text-white" href="%1$s">
+        <button class="mt-4 btn btn-info">
+          %2$s
+       </button>
+       </a>',
       get_permalink( get_the_ID() ),
       __( 'Read more', 'cgr-awpt')
     );

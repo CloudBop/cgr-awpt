@@ -31,23 +31,19 @@ class Assets {
 
   public function register_styles() {
     // - use this for timestamp, only changes if file is modified
-    $tmp_dir = CGR_AWPT_DIR_PATH . '/style.css';
     // - register with WP :- can enqueue programatically, for page_template() || gutenberg || plugin 
     // register styles
-    wp_register_style($handle = 'style-css', get_stylesheet_uri(), [], $ver = filemtime($tmp_dir), $media= 'all');
-    wp_register_style($handle = 'bootstrap-css', CGR_AWPT_DIR_URI.'/assets/src/library/css/bootstrap.min.css' , [], $media= 'all');
+    // $tmp_dir = CGR_AWPT_DIR_PATH . '/style.css';
+    // wp_register_style($handle = 'style-css', get_stylesheet_uri(), [], $ver = filemtime($tmp_dir), $media= 'all');
+    wp_register_style($handle = 'bootstrap-css', CGR_AWPT_DIR_URI.'/assets/src/library/css/bootstrap.min.css' , [], false, $media= 'all');
     wp_register_style($handle = 'main-css', CGR_AWPT_BUILD_CSS_URI . '/main.css' , ['bootstrap-css'], filemtime(CGR_AWPT_BUILD_CSS_DIR_PATH . '/main.css'), $media= 'all');
-
-
+  
     // -create google font set - https://google-webfonts-helper.herokuapp.com/fonts
-
     wp_register_style($handle = 'fonts-css', CGR_AWPT_DIR_URI.'/assets/src/library/fonts/fonts.css' , [], false, $media= 'all');
-
     //
     // enqeue styles
     wp_enqueue_style($handle='bootstrap-css');
     wp_enqueue_style($handle='main-css');
-    wp_enqueue_style($handle='style-css');
   }
 
   public function register_scripts() {
