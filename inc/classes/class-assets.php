@@ -39,7 +39,8 @@ class Assets {
     wp_register_style($handle = 'main-css', CGR_AWPT_BUILD_CSS_URI . '/main.css' , ['bootstrap-css'], filemtime(CGR_AWPT_BUILD_CSS_DIR_PATH . '/main.css'), $media= 'all');
   
     // -create google font set - https://google-webfonts-helper.herokuapp.com/fonts
-    wp_register_style($handle = 'fonts-css', CGR_AWPT_DIR_URI.'/assets/src/library/fonts/fonts.css' , [], false, $media= 'all');
+    // - bundled in webpack
+    // wp_register_style($handle = 'fonts-css', CGR_AWPT_DIR_URI.'/assets/src/library/fonts/fonts.css' , [], false, $media= 'all');
     //
     // enqeue styles
     wp_enqueue_style($handle='bootstrap-css');
