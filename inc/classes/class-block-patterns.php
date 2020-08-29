@@ -44,26 +44,39 @@ class Block_patterns extends WP_Widget {
           'content' => $cover_content 
         ]
       );
+
+      /**
+       * Two Column Pattern
+       */
+      $two_columns_content = $this->get_pattern_content( 'template-parts/patterns/two-columns' );
+
+      register_block_pattern(
+        'aquila/two-columns',
+        [
+          'title' => __( 'Aquila Two Column', 'aquila' ),
+          'description' => __( 'Aquila two columns with heading and text', 'aquila' ),
+          'categories' => [ 'columns' ],
+          'content' => $two_columns_content,
+        ]
+      );
     }
   }
 
   public function get_pattern_content($template_path){
-    // output buffering
-    ob_start();
+      // output buffering
+      ob_start();
       // echos the template to buffer
       get_template_part($template_path);
       // save buffer content to variable : string
       $cover_pattern = ob_get_contents();
-    ob_end();
-
+      ob_end_clean();
     return $cover_pattern;
   }
   
   public function register_block_pattern_categories() {
-
     $pattern_categories = [
       'cover' => __('Cover', 'cgr-awpt'),
-      'carousel' => __('Carousel', 'cgr-awpt')
+      'coumns' => __('Columns', 'cgr-awpt')
     ];
 
     // defensive php
@@ -78,10 +91,5 @@ class Block_patterns extends WP_Widget {
         );
       }
     }
-
-
-
-
-
   }
 }
