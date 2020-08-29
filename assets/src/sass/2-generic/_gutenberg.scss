@@ -5,6 +5,7 @@
 			margin: $margin-top auto $margin-bottom auto;
 		}
 
+		// don't target these.
 		& > *:not(.alignfull) {
 			max-width: $site_width;
 			padding: 0 $padding-right 0 $padding-left;
