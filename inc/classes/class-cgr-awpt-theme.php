@@ -63,7 +63,7 @@ class CGR_AWPT_THEME {
     add_theme_support('post-thumbnails');
 
     // register image sizes
-    add_theme_support( 'featured-thumbnail', 350, 233, $crop_from_center=true );
+    add_image_size( 'featured-thumbnail', 350, 233, $crop_from_center=true );
 
     // https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
     add_theme_support('customize-selective-refresh-widgets');
@@ -73,15 +73,19 @@ class CGR_AWPT_THEME {
 
     // - html5 standards in default markup
     add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
-
-    // - custom css to tinymice 
-    // add_editor_style( $default = 'editor.style.css' || $custom_path )
-
     //
+    // - custom css from tinymice 
+    add_editor_style();
     // 
     add_theme_support('wp-block-styles');
     // align-wide and full-width imgs in gutenberg
     add_theme_support('align-wide');
+
+    //
+    add_editor_style('assets/build/css/editor.css');
+
+
+
 
     // set wordpress global width 
     global $content_width;
