@@ -26,33 +26,62 @@ class Block_patterns extends WP_Widget {
      * Actions
      */
     add_action('init', [$this, 'register_block_patterns']);
+    add_action('init', [$this, 'register_block_pattern_categories']);
   }
 
   public function register_block_patterns() {
     
     if (function_exists('register_block_pattern')){
+
+      $cover_content = $this->get_pattern_content('template-parts/patterns/cover');
+
       register_block_pattern(
         $slug = 'cgr-awpt/cover',
         $rgs = [
           'title'       => __('Cover | cgr-awpt', 'cgr-awpt'),
           'description' => __('Cover block image and text| cgr-awpt', 'cgr-awpt'),
-          'content' => "<!-- wp:cover {\"url\":\"http://dummycontent.local/wp-content/uploads/2020/08/9c81d4c5-9971-3585-9698-4a6c912ffdfd.jpg\",\"id\":34} -->
-          <div class=\"wp-block-cover has-background-dim\" style=\"background-image:url(http://dummycontent.local/wp-content/uploads/2020/08/9c81d4c5-9971-3585-9698-4a6c912ffdfd.jpg)\"><div class=\"wp-block-cover__inner-container\"><!-- wp:heading {\"align\":\"center\"} -->
-          <h2 class=\"has-text-align-center\">Sample Cover</h2>
-          <!-- /wp:heading -->
-          
-          <!-- wp:paragraph {\"align\":\"center\"} -->
-          <p class=\"has-text-align-center\">Testing Testing Testing Testing Testing Testing Testing TestingTesting Testing Testing Testing</p>
-          <!-- /wp:paragraph -->
-          
-          <!-- wp:buttons {\"align\":\"center\"} -->
-          <div class=\"wp-block-buttons aligncenter\"><!-- wp:button -->
-          <div class=\"wp-block-button\"><a class=\"wp-block-button__link\">An Action Button </a></div>
-          <!-- /wp:button --></div>
-          <!-- /wp:buttons --></div></div>
-          <!-- /wp:cover -->"
+          'categories' => ['cover'],
+          'content' => $cover_content 
         ]
       );
     }
-  }	
+  }
+
+  public function get_pattern_content($template_path){
+    // output buffering
+    ob_start();
+      // echos the template to buffer
+      get_template_part($template_path);
+      // save buffer content to variable : string
+      $cover_pattern = ob_get_contents();
+    ob_end();
+
+    return $cover_pattern;
+  }
+  
+  public function register_block_pattern_categories() {
+
+    $pattern_categories = [
+      'cover' => __('Cover', 'cgr-awpt'),
+      'carousel' => __('Carousel', 'cgr-awpt')
+    ];
+
+    // defensive php
+    if ( ! empty( $pattern_categories ) && is_array( $pattern_categories) ) {
+      //
+      foreach ( $pattern_categories as $pattern_category => $pattern_category_label ) {
+        register_block_pattern_category(
+          
+            $pattern_category,
+            array( 'label' => $pattern_category_label)
+          
+        );
+      }
+    }
+
+
+
+
+
+  }
 }
