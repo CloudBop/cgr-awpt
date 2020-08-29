@@ -56,3 +56,11 @@ function cgr_awpt_get_theme_instance() {
   \CGR_AWPT\Inc\CGR_AWPT_THEME::get_instance();
 }
 cgr_awpt_get_theme_instance();
+
+function remove_default_gutenberg() {
+  wp_dequeue_style('wp-block-library');
+  wp_dequeue_style('wp-block-library-theme');
+  wp_dequeue_style('wp-block-style');
+}
+
+// add_action('wp_enqueue_scripts', $function_to_add= 'remove_default_gutenberg', $priority, $accepted_args)
