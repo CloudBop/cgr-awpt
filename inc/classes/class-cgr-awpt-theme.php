@@ -85,6 +85,9 @@ class CGR_AWPT_THEME {
     //
     add_editor_style('assets/build/css/editor.css');
 
+    // remove all core block patterns
+    // remove_theme_support($feature='core-block-patterns');
+
 
 
 
