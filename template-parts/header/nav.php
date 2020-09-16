@@ -6,9 +6,10 @@
  */
 // Singleton - only instantiated once.
 $menu_class = \CGR_AWPT\Inc\Menus::get_instance();
+// get the menu ID
 $header_menu_id = $menu_class->get_menu_id( 'cgr-awpt-header-menu' );
-
-$header_menus = wp_get_nav_menu_items($menu = $header_menu_id, $args=[])
+// get the header menu as [] each item is object(WP_Post)
+$header_menus = wp_get_nav_menu_items($menu = $header_menu_id, $args=[]);
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -24,18 +25,19 @@ $header_menus = wp_get_nav_menu_items($menu = $header_menu_id, $args=[])
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
       <?php if ( ! empty($header_menus) && is_array($header_menus) ) { ?>
 
         <ul class="navbar-nav mr-auto">
           <?php
+            // loop through all items in headermenu array
             foreach ($header_menus as $menu_item) {
-
-              if( ! $menu_item->menu_item_parent ) {
+              // IF this menu item is parent. ie @ top level of nav -- in other words ignore child menus in this loop
+              if( ! $menu_item->menu_item_parent ) { 
+                // get child menu items of this current menu_item
                 $child_menu_items = $menu_class->get_child_menu_items( $header_menus, $menu_item->ID );
-
-                $has_children = ! empty($child_menu_items) && is_array($child_menu_items);
-
+                // does $child_menu_items have children
+                $has_children = !empty($child_menu_items) && is_array($child_menu_items);
+                // print_r($has_children);
                 if(!$has_children) {
                   ?>
                     <li class="nav-item active">
@@ -49,7 +51,7 @@ $header_menus = wp_get_nav_menu_items($menu = $header_menu_id, $args=[])
                   ?>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="<?php echo esc_url( $menu_item->url ); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo esc_url( $menu_item->title ); ?>
+                        <?php echo esc_html( $menu_item->title ); ?>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php foreach ($child_menu_items as $child_menu_item) { ?>
