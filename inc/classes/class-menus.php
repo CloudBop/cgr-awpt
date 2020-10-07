@@ -28,6 +28,7 @@ class Menus {
 
   public function register_menus() {
     // set wordpress appearances/Menus
+    // will only exist if activated in backend
     register_nav_menus(
       array(
         // why is it better to use esc_html__ ???
@@ -40,7 +41,6 @@ class Menus {
   public function get_menu_id( $location ) {
     // return all currently set locations = ['primary',...]
     $locations = get_nav_menu_locations();  
-
     // get menu object id by assoc key
     $menu_id = $locations[$location]; 
     // if !empty return 
@@ -54,8 +54,7 @@ class Menus {
     if ( !empty ($menu_array) && is_array($menu_array)) {
       // loop through header menu again
       foreach ($menu_array as $menu) {
-        // var_dump($menu);
-        // echo '<br>';
+        // prev error on frontend === $menu->$menu_item_parent - never threw php error because it found the object
         // intval - force int. get all the menus that are children of this parent.
         if(intval( $menu->menu_item_parent) === $parent_id) {
           //

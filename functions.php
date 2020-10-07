@@ -51,7 +51,7 @@ require_once CGR_AWPT_DIR_PATH .'/inc/helpers/autoloader.php';
 require_once CGR_AWPT_DIR_PATH .'/inc/helpers/template-tags.php';
 
 
-//
+// - entrypoint 
 function cgr_awpt_get_theme_instance() {
   \CGR_AWPT\Inc\CGR_AWPT_THEME::get_instance();
 }

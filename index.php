@@ -3,6 +3,7 @@
  * main template
  * 
  * end of template heirarchy
+ * https://developer.wordpress.org/themes/basics/template-hierarchy/
  * 
  * @package cgr-awpt
  */
