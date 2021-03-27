@@ -1,6 +1,7 @@
 .home-page-wrap {
-	.entry-content {
 
+	.entry-content {
+		// all direct children
 		& > * {
 			margin: $margin-top auto $margin-bottom auto;
 		}

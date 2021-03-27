@@ -6,7 +6,7 @@
  * https://developer.wordpress.org/themes/basics/template-hierarchy/
  * 
  * @package cgr-awpt
- */
+ */ 
 ?>
 
 <?php get_header();?>

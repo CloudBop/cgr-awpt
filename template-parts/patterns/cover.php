@@ -1,7 +1,7 @@
 <?php
 /**
  * don't need to escape string when used as template.
- * 
+ * e re-usuable pattern
  */
 
  $cover_style = sprintf(

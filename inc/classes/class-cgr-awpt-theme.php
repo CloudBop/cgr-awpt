@@ -88,9 +88,6 @@ class CGR_AWPT_THEME {
     // remove all core block patterns
     remove_theme_support($feature='core-block-patterns');
 
-
-
-
     // set wordpress global width 
     global $content_width;
     if( ! isset( $content_width ) ) {

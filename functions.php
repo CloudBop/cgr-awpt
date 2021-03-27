@@ -5,7 +5,6 @@
  * @package cgr-awpt
  * 
  */
-
 //
 // Set constants
 //
@@ -44,12 +43,12 @@ if ( !defined( 'CGR_AWPT_BUILD_IMG_URI') ) {
   define( 'CGR_AWPT_BUILD_IMG_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build/src/img' );
 }
 
-// autoload all classes
+// autoload all classes 
+// import MyComponent from './Comnent 
 require_once CGR_AWPT_DIR_PATH .'/inc/helpers/autoloader.php';
 
 // template tags
 require_once CGR_AWPT_DIR_PATH .'/inc/helpers/template-tags.php';
-
 
 // - entrypoint 
 function cgr_awpt_get_theme_instance() {
@@ -57,10 +56,10 @@ function cgr_awpt_get_theme_instance() {
 }
 cgr_awpt_get_theme_instance();
 
+//
 function remove_default_gutenberg() {
   wp_dequeue_style('wp-block-library');
   wp_dequeue_style('wp-block-library-theme');
   wp_dequeue_style('wp-block-style');
 }
-
 // add_action('wp_enqueue_scripts', $function_to_add= 'remove_default_gutenberg', $priority, $accepted_args)
