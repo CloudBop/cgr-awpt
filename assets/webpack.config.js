@@ -5,6 +5,8 @@ const cssnano = require('cssnano') //https://cssnano.co/
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin'); // https://webpack.js.org/plugins/copy-webpack-plugin/
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+// manage dependencies between front+backend
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
 const path = require('path');
 
@@ -16,7 +18,8 @@ const BUILD_DIR = path.resolve(__dirname, 'build');
 const entry = {
   main: JS_DIR + '/main.js',
   single: JS_DIR + '/single.js',
-  editor: JS_DIR + '/editor.js'
+  editor: JS_DIR + '/editor.js',
+  blocks: JS_DIR + '/blocks.js'
 }
 const output = {
   path: BUILD_DIR,
@@ -94,7 +97,13 @@ const plugins = (argv) => [
       // and let Webpack Dev Server take care of this
       // reload: false
     }
-  )
+  ),
+
+  new DependencyExtractionWebpackPlugin( {
+		injectPolyfill: true,
+    // 
+		combineAssets: true,
+	} )
 
 ]
 
