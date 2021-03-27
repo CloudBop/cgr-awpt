@@ -4,6 +4,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano') //https://cssnano.co/
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin'); // https://webpack.js.org/plugins/copy-webpack-plugin/
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const path = require('path');
 
@@ -74,6 +75,26 @@ const plugins = (argv) => [
       { from: LIB_DIR, to: BUILD_DIR + '/library' }
     ]
   }),
+
+  new BrowserSyncPlugin(
+    // BrowserSync options
+    {
+      // browse to http://localhost:3000/ during development
+      host: 'localhost',
+      port: 3000,
+      // proxy the Webpack Dev Server endpoint
+      // (which should be serving on http://localhost:3100/)
+      // through BrowserSync
+      // proxy: 'http://localhost:3100/'
+      proxy: 'http://dummycontent.local/'
+    },
+    // plugin options
+    {
+      // prevent BrowserSync from reloading the page
+      // and let Webpack Dev Server take care of this
+      // reload: false
+    }
+  )
 
 ]
 
