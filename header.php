@@ -7,9 +7,9 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="<?php language_attributes($doctype) ?>">
+<html <?php language_attributes($doctype = "html") ?>>
 <head>
-  <meta charset="<?php bloginfo($show)?>">
+  <meta charset="<?php bloginfo($show = '')?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cgr-awpt WordPress Theme</title>
 
@@ -28,4 +28,3 @@
     <?php get_template_part( 'template-parts/header/nav' ); ?>
   </header>
   <div class="site-content" id="content">
-  
