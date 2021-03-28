@@ -77,12 +77,13 @@ class CGR_AWPT_THEME {
     //
     // - custom css from tinymice 
     add_editor_style();
+    // -
+    add_theme_support($feature="editor-styles");
     // 
     add_theme_support('wp-block-styles');
     // align-wide and full-width imgs in gutenberg
     add_theme_support('align-wide');
-
-    //
+    // - backend only styles
     add_editor_style('assets/build/css/editor.css');
 
     // remove all core block patterns

@@ -27,6 +27,11 @@ class Assets {
     add_action('wp_enqueue_scripts', [$this, 'register_styles']);
     add_action('wp_enqueue_scripts', [$this, 'register_scripts']);
 
+    // shared by frontend + editor
+    // https://developer.wordpress.org/reference/hooks/enqueue_block_assets/
+    // @wordpress/dependency-extraction-webpack-plugin
+    add_action('enqueue_block_assets', [$this, 'enqueue_editor_assets']);
+
   }
 
   public function register_styles() {
@@ -59,4 +64,50 @@ class Assets {
     wp_enqueue_script($handle='bootstrap-js');
   }
 
+  public function enqueue_editor_assets(){
+    //
+    // https://developer.wordpress.org/reference/hooks/enqueue_block_assets/
+    $asset_config_file = sprintf('%s/assets.php', CGR_AWPT_BUILD_PATH);
+
+    if( ! file_exists($asset_config_file) ) {
+      return;
+    }
+
+    //
+    $asset_config = require_once $asset_config_file;
+
+    if ( empty( $asset_config['js/editor.js'])) {
+      return;
+    }
+
+    $editor_asset = $asset_config['js/editor.js'];
+
+    $js_dependencies = ( ! empty( $editor_asset['dependencies'] ) ) ? $editor_asset['dependencies'] : [];
+    $version = ( ! empty( $editor_asset['version'] ) ) ? $editor_asset['version'] : filemtime($asset_config_file);
+
+
+    // theme gutenberg block javascript
+    if( is_admin() ){
+      wp_enqueue_script(
+        $handle="cgr-awpt-block-js", 
+        $src= CGR_AWPT_BUILD_JS_URI . "/blocks.js", 
+        $js_dependencies, 
+        $version, 
+        $in_footer=true
+      );
+    }
+   
+    $css_dependencies = [
+      'wp-block-library-theme',
+      'wp-block-library',
+    ];
+
+    wp_enqueue_style(
+      $handle="cgr-awpt-blocks-css", 
+      $src= CGR_AWPT_BUILD_CSS_URI."/blocks.css",
+      $css_dependencies, 
+      filemtime( CGR_AWPT_BUILD_CSS_DIR_PATH .'/blocks.css'), 
+      $media='all'
+    );
+  }
 }

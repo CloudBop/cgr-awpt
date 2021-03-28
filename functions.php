@@ -22,6 +22,12 @@ if ( !defined( 'CGR_AWPT_BUILD_URI') ) {
   // - get build folder 
   define( 'CGR_AWPT_BUILD_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build' );
 }
+
+if ( !defined("CGR_AWPT_BUILD_PATH")) {
+  define('CGR_AWPT_BUILD_PATH', untrailingslashit($string=get_template_directory() ).'/assets/build');
+}
+
+
 if ( !defined( 'CGR_AWPT_BUILD_JS_URI') ) {
   // - get build folder 
   define( 'CGR_AWPT_BUILD_JS_URI' , untrailingslashit( $string=get_template_directory_uri() ) . '/assets/build/js' );
