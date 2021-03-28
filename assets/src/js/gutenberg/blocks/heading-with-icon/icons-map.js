@@ -9,7 +9,6 @@ import { isEmpty } from 'lodash';
  * @return {*|SvgCheck} SVG Component.
  */
 export const getIconComponent = ( option ) => {
-	console.log(`getIconComponent:option`, option)
 	const IconsMap = {
 		dos: SvgIcons.Check,
 		donts: SvgIcons.Cross,
