@@ -1,42 +1,48 @@
 (function ($) {
-  class Clock {
-    constructor() {
-      this.initializeClock();
-    }
+	class Clock {
+		constructor() {
+			this.initializeClock();
+		}
 
-    initializeClock() {
-      let t = setInterval(() => this.time(), 1000);
-    }
+		initializeClock() {
+			const t = setInterval( () => this.time(), 1000 );
+		}
 
-    numPad(str) {
-      let cStr = str.toString();
-      if (cStr.length < 2) str = 0 + cStr;
-      return str;
-    }
+		numPad(str) {
+			const cStr = str.toString();
+			if (cStr.length < 2) {
+				str = 0 + cStr;
+			}
+			return str;
+		}
 
-    time() {
-      let currDate = new Date();
-      let currSec = currDate.getSeconds();
-      let currMin = currDate.getMinutes();
-      let curr24Hr = currDate.getHours();
-      let ampm = curr24Hr >= 12 ? 'pm' : 'am';
-      let currHr = curr24Hr % 12;
-      currHr = currHr ? currHr : 12;
+		time() {
+			const currDate = new Date();
+			const currSec = currDate.getSeconds();
+			const currMin = currDate.getMinutes();
+			const curr24Hr = currDate.getHours();
+			const ampm = 12 <= curr24Hr ? 'pm' : 'am';
+			let currHr = curr24Hr % 12;
+			currHr = currHr ? currHr : 12;
 
-      let stringTime = currHr + ':' + this.numPad(currMin) + ':' + this.numPad(currSec);
-      const timeEmojiEl = $('#time-emoji');
+			const stringTime =
+				currHr +
+				':' +
+				this.numPad( currMin ) +
+				':' +
+				this.numPad( currSec );
+			const timeEmojiEl = $('#time-emoji');
 
-      if (curr24Hr >= 5 && curr24Hr <= 17) {
-        timeEmojiEl.text('🌞');
-      } else {
-        timeEmojiEl.text('🌜');
-      }
+			if (curr24Hr >= 5 && 17 >= curr24Hr ) {
+				timeEmojiEl.text('🌞');
+			} else {
+				timeEmojiEl.text('🌜');
+			}
 
-      $('#time').text(stringTime);
-      $('#ampm').text(ampm);
-    }
-  }
+			$('#time').text(stringTime);
+			$('#ampm').text(ampm);
+		}
+	}
 
-  new Clock();
-
-})(jQuery);
+	new Clock();
+} )( jQuery );

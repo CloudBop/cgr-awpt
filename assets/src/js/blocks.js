@@ -1,4 +1,3 @@
-import '../sass/blocks.scss'
-
+import '../sass/blocks.scss';
 // blocks
-import './gutenberg/blocks/heading-with-icon'
+import './gutenberg/blocks/heading-with-icon';

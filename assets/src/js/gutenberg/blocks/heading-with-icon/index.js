@@ -79,8 +79,8 @@ registerBlockType( 'cgr-awpt-blocks/heading', {
 		const {
 			attributes: { option, content },
 		} = props;
-		console.log('---------save')
-		console.log(`option`, option)
+		console.log('---------save');
+		console.log(`option`, option);
 
 		const HeadingIcon = getIconComponent( option );
 
@@ -89,8 +89,8 @@ registerBlockType( 'cgr-awpt-blocks/heading', {
 				<span className="cgr-awpt-icon-heading__heading">
 					<HeadingIcon />
 				</span>
-				{ /* Saves <h2>Content added in the editor...</h2> to the database for frontend display */ }
-				<RichText.Content tagName="h4" value={ content } />
+				{/* Saves <h2>Content added in the editor...</h2> to the database for frontend display */}
+				<RichText.Content tagName="h4" value={content} />
 			</div>
 		);
 	},

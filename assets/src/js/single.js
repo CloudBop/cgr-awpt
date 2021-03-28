@@ -1,2 +1,2 @@
 // single page js
-import '../sass/single.scss'
+import '../sass/single.scss';
