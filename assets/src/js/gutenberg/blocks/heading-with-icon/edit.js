@@ -47,8 +47,8 @@ const Edit = ( props ) => {
 							{ label: 'Dos', value: 'dos' },
 							{ label: "Dont's", value: 'donts' },
 						] }
-						onChange={ ( optionVal ) => {
-							setAttributes( { optionVal } );
+						onChange={ ( option ) => {
+							setAttributes( { option } );
 						} }
 					/>
 				</PanelBody>
